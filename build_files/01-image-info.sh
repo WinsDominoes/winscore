@@ -22,6 +22,7 @@ if [[ "${IMAGE_NAME}" =~ nvidia ]]; then
   image_flavor="nvidia"
 fi
 
+mkdir "/usr/share/winscore"
 touch $IMAGE_INFO
 cat >$IMAGE_INFO <<EOF
 {
