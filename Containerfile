@@ -18,6 +18,14 @@ FROM quay.io/fedora/fedora-coreos:testing
 ## make modifications desired in your image and install packages by modifying the build.sh script
 ## the following RUN directive does all the things required to run "build.sh" as recommended.
 
+ARG BASE_IMAGE_NAME="fedora-coreos"
+ARG FEDORA_MAJOR-VERSION="42"
+ARG IMAGE_NAME="winscore"
+ARG IMAGE_VENDOR="winsdominoes"
+ARG FEDORA_MAJOR_VERSION="42"
+ARG UBLUE_IMAGE_TAG="42"
+ARG VERSION=""
+
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
