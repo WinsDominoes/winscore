@@ -9,8 +9,22 @@ set -ouex pipefail
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
-# this installs a package from fedora repos
-dnf5 install -y tmux 
+dnf5 install -y 'dnf-command(config-manager)' epel-release
+dnf5 config-manager --set-enabled crb
+dnf5 -y copr enable ublue-os/packages
+dnf5 config-manager --add-repo https://pkgs.tailscale.com/stable/rhel/10/tailscale.repo
+
+# This installs a package from fedora repos
+dnf5 -y install tailscale distrobox ublue-brew uupd podman cockpit samba
+
+dnf config-manager --add-repo "https://download.docker.com/linux/centos/docker-ce.repo"
+dnf config-manager --set-disabled docker-ce-stable
+dnf -y --enablerepo docker-ce-stable install \
+	docker-ce \
+	docker-ce-cli \
+	containerd.io \
+	docker-buildx-plugin \
+	docker-compose-plugin
 
 # Use a COPR Example:
 #
@@ -19,6 +33,10 @@ dnf5 install -y tmux
 # Disable COPRs so they don't end up enabled on the final image:
 # dnf5 -y copr disable ublue-os/staging
 
-#### Example for enabling a System Unit File
+# Enable required System Unit files
 
+systemctl enable brew-setup.service
+systemctl enable tailscaled.service
+systemctl enable uupd.timer
 systemctl enable podman.socket
+systemctl enable docker.socket
