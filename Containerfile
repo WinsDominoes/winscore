@@ -35,9 +35,7 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     /ctx/02-install-packages.sh && \
     /ctx/03-remove-packages.sh && \
     /ctx/04-enable-services.sh && \
-    /ctx/05-just.sh && \
-    /ctx/06-selinux.sh && \
-    /ctx/07-cleanup.sh && \
+    /ctx/05-cleanup.sh && \
     ostree container commit
     
 ### LINTING
