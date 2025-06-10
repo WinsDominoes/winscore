@@ -3,7 +3,7 @@ FROM scratch AS ctx
 COPY build_files /
 
 # Base Image
-FROM quay.io/fedora/fedora-coreos:42
+FROM quay.io/fedora/fedora-coreos:testing
 
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
