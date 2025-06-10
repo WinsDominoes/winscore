@@ -3,7 +3,7 @@ FROM scratch AS ctx
 COPY build_files /
 
 # Base Image
-FROM quay.io/fedora/fedora-coreos:testing
+FROM quay.io/fedora/fedora-coreos:stable
 
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:latest
@@ -33,9 +33,10 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     /ctx/00-preconfigure.sh && \
     /ctx/01-image-info.sh && \
     /ctx/02-install-packages.sh && \
-    /ctx/03-remove-packages.sh && \
-    /ctx/04-enable-services.sh && \
-    /ctx/05-cleanup.sh && \
+    /ctx/03-get-official-docker.sh && \
+    /ctx/04-remove-packages.sh && \
+    /ctx/05-enable-services.sh && \
+    /ctx/06-cleanup.sh && \
     ostree container commit
     
 ### LINTING
