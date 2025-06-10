@@ -22,7 +22,14 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
     --mount=type=tmpfs,dst=/tmp \
-    /ctx/build.sh && \
+    /ctx/00-preconfigure.sh && \
+    /ctx/01-image-info.sh && \
+    /ctx/02-install-packages.sh && \
+    /ctx/03-remove-packages.sh && \
+    /ctx/04-enable-services.sh && \
+    /ctx/05-just.sh && \
+    /ctx/06-selinux.sh && \
+    /ctx/07-cleanup.sh && \
     ostree container commit
     
 ### LINTING
