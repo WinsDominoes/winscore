@@ -13,7 +13,7 @@ BUG_SUPPORT_URL="https://github.com/winsdominoes/winscore/issues/"
 CODE_NAME="CookiesAndCream"
 VERSION="${VERSION:-00.00000000}"
 
-IMAGE_INFO="/usr/share/ublue-os/image-info.json"
+IMAGE_INFO="/usr/share/winscore/image-info.json"
 IMAGE_REF="ostree-image-signed:docker://ghcr.io/$IMAGE_VENDOR/$IMAGE_NAME"
 
 # Image Flavor
@@ -22,6 +22,7 @@ if [[ "${IMAGE_NAME}" =~ nvidia ]]; then
   image_flavor="nvidia"
 fi
 
+touch $IMAGE_INFO
 cat >$IMAGE_INFO <<EOF
 {
   "image-name": "$IMAGE_NAME",
