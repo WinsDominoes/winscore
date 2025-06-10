@@ -4,7 +4,7 @@
 
 set -ouex pipefail
 
-IMAGE_PRETTY_NAME="WinsCore"
+IMAGE_PRETTY_NAME="fedora"
 IMAGE_LIKE="fedora"
 HOME_URL="https://winsdominoes.net"
 DOCUMENTATION_URL="https://github.com/winsdominoes/winscore/wiki/"
