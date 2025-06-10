@@ -22,7 +22,10 @@ dnf5 -y install tailscale distrobox ublue-brew uupd podman cockpit samba brcmfma
 # dnf5 -y copr enable ublue-os/staging
 # dnf5 -y install package
 # Disable COPRs so they don't end up enabled on the final image:
-# dnf5 -y copr disable ublue-os/staging
+dnf5 -y remove PackageKit
+
+dnf5 -y copr disable ublue-os/packages
+sed -i 's@enabled=1@enabled=0@g' /etc/yum.repos.d/tailscale.repo
 
 # Enable required System Unit files
 
