@@ -9,22 +9,13 @@ set -ouex pipefail
 # List of rpmfusion packages can be found here:
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
-dnf5 install -y 'dnf-command(config-manager)' epel-release
-dnf5 config-manager --set-enabled crb
+
+
 dnf5 -y copr enable ublue-os/packages
-dnf5 config-manager --add-repo https://pkgs.tailscale.com/stable/rhel/10/tailscale.repo
+dnf5 config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 
 # This installs a package from fedora repos
-dnf5 -y install tailscale distrobox ublue-brew uupd podman cockpit samba
-
-dnf config-manager --add-repo "https://download.docker.com/linux/centos/docker-ce.repo"
-dnf config-manager --set-disabled docker-ce-stable
-dnf -y --enablerepo docker-ce-stable install \
-	docker-ce \
-	docker-ce-cli \
-	containerd.io \
-	docker-buildx-plugin \
-	docker-compose-plugin
+dnf5 -y install tailscale distrobox ublue-brew uupd podman cockpit samba brcmfmac-firmware bootc NetworkManager-wifi atheros-firmware iwlegacy-firmware iwlwifi-dvm-firmware iwlwifi-mvm-firmware mt7xxx-firmware nxpwireless-firmware realtek-firmware tiwilink-firmware 
 
 # Use a COPR Example:
 #
