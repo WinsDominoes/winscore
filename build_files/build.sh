@@ -10,7 +10,7 @@ set -ouex pipefail
 # https://mirrors.rpmfusion.org/mirrorlist?path=free/fedora/updates/39/x86_64/repoview/index.html&protocol=https&redirect=1
 
 
-dnf5 install 'dnf5-command(copr)'
+dnf5 install -y 'dnf5-command(copr)'
 dnf5 -y copr enable ublue-os/packages
 dnf5 config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 
