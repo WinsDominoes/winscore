@@ -11,7 +11,7 @@ DOCUMENTATION_URL="https://github.com/winsdominoes/winscore/wiki/"
 SUPPORT_URL="https://github.com/winsdominoes/winscore/issues/"
 BUG_SUPPORT_URL="https://github.com/winsdominoes/winscore/issues/"
 CODE_NAME="CookiesAndCream"
-VERSION="${VERSION:-00.00000000}"
+VERSION="${VERSION:-42.00000000}"
 
 IMAGE_INFO="/usr/share/winscore/image-info.json"
 IMAGE_REF="ostree-image-signed:docker://ghcr.io/$IMAGE_VENDOR/$IMAGE_NAME"
