@@ -1,4 +1,5 @@
-# image-template
+# WinsCore
+- Based on image-template
 
 # Purpose
 
