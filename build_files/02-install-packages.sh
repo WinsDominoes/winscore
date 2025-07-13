@@ -13,6 +13,7 @@ sysadmin_packages=(
   "podman" 
   "cockpit"
   "bootc"
+  "crontabs"
 )
 
 firmware_packages=(
