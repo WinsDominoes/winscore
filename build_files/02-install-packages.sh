@@ -8,12 +8,20 @@ dnf5 -y copr enable ublue-os/packages
 dnf5 config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 
 # Packages
+sys_packages=(
+  "cron"
+  "anacron"
+  "at"
+  "batch"
+  "cronie"
+  "cronie-anacron"
+)
+
 sysadmin_packages=(
   "tailscale"
   "podman" 
   "cockpit"
   "bootc"
-  "crontabs"
 )
 
 firmware_packages=(
@@ -38,6 +46,7 @@ utility_packages=(
 )
 
 dnf_packages=(
+  ${sys_packages[@]}
   ${sysadmin_packages[@]}
   ${firmware_packages[@]}
   ${utility_packages[@]}
