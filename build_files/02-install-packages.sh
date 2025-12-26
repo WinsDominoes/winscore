@@ -5,6 +5,7 @@ set -ouex pipefail
 # Repositories
 dnf5 install -y 'dnf5-command(copr)'
 dnf5 -y copr enable ublue-os/packages
+dnf5 -y copr enable secureblue/run0edit
 dnf5 config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 
 # Packages
@@ -22,6 +23,7 @@ sysadmin_packages=(
   "podman" 
   "cockpit"
   "bootc"
+  "run0edit"
 )
 
 firmware_packages=(
@@ -39,10 +41,8 @@ firmware_packages=(
 
 utility_packages=(
   "distrobox" 
-  "ublue-brew" 
   "uupd"
   "samba" 
-  "micro"
 )
 
 dnf_packages=(

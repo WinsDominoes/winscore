@@ -19,13 +19,14 @@ FROM quay.io/fedora/fedora-coreos:stable
 ## the following RUN directive does all the things required to run "build.sh" as recommended.
 
 ARG BASE_IMAGE_NAME="fedora-coreos"
-ARG FEDORA_MAJOR-VERSION="42"
+ARG FEDORA_MAJOR-VERSION="43"
 ARG IMAGE_NAME="winscore"
 ARG IMAGE_VENDOR="winsdominoes"
-ARG FEDORA_MAJOR_VERSION="42"
-ARG UBLUE_IMAGE_TAG="42"
+ARG FEDORA_MAJOR_VERSION="43"
+ARG UBLUE_IMAGE_TAG="43"
 ARG VERSION=""
 
+COPY --from=ghcr.io/ublue-os/brew:latest /system_files /
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
