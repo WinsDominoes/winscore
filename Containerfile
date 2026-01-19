@@ -37,8 +37,11 @@ RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     /ctx/03-get-official-docker.sh && \
     /ctx/04-remove-packages.sh && \
     /ctx/05-enable-services.sh && \
-    /ctx/06-cleanup.sh && \
-    ostree container commit
+    /ctx/06-cleanup.sh
+ENV LD_PRELOAD="/usr/local/lib/libhardened_malloc.so"
+
+
+RUN ostree container commit
     
 ### LINTING
 ## Verify final image and contents are correct.

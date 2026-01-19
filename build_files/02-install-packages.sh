@@ -6,6 +6,7 @@ set -ouex pipefail
 dnf5 install -y 'dnf5-command(copr)'
 dnf5 -y copr enable ublue-os/packages
 dnf5 -y copr enable secureblue/run0edit
+dnf5 -y copr enable secureblue/hardened_malloc
 dnf5 config-manager addrepo --from-repofile=https://pkgs.tailscale.com/stable/fedora/tailscale.repo
 
 # Packages
@@ -24,6 +25,7 @@ sysadmin_packages=(
   "cockpit"
   "bootc"
   "run0edit"
+  "hardened_malloc"
 )
 
 firmware_packages=(
